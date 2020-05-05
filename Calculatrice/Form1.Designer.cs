@@ -1,6 +1,6 @@
 ﻿namespace Calculatrice
 {
-    partial class Form1
+    partial class Calculatrice
     {
         /// <summary>
         /// Variable nécessaire au concepteur.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Resultat = new System.Windows.Forms.TextBox();
             this.PlusMoin = new System.Windows.Forms.Button();
             this.Zero = new System.Windows.Forms.Button();
             this.Separa = new System.Windows.Forms.Button();
@@ -55,13 +55,14 @@
             this.button24 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // textBox1
+            // Resultat
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 12);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(309, 103);
-            this.textBox1.TabIndex = 0;
+            this.Resultat.Location = new System.Drawing.Point(12, 12);
+            this.Resultat.Multiline = true;
+            this.Resultat.Name = "Resultat";
+            this.Resultat.Size = new System.Drawing.Size(309, 103);
+            this.Resultat.TabIndex = 0;
+            this.Resultat.TextChanged += new System.EventHandler(this.Resultat_TextChanged);
             // 
             // PlusMoin
             // 
@@ -71,6 +72,7 @@
             this.PlusMoin.TabIndex = 1;
             this.PlusMoin.Text = "+/-";
             this.PlusMoin.UseVisualStyleBackColor = true;
+            this.PlusMoin.Click += new System.EventHandler(this.PlusMoin_Click);
             // 
             // Zero
             // 
@@ -90,6 +92,7 @@
             this.Separa.TabIndex = 3;
             this.Separa.Text = ".";
             this.Separa.UseVisualStyleBackColor = true;
+            this.Separa.Click += new System.EventHandler(this.Separa_Click);
             // 
             // Egal
             // 
@@ -99,6 +102,7 @@
             this.Egal.TabIndex = 4;
             this.Egal.Text = "=";
             this.Egal.UseVisualStyleBackColor = true;
+            this.Egal.Click += new System.EventHandler(this.Egal_Click);
             // 
             // Un
             // 
@@ -108,6 +112,7 @@
             this.Un.TabIndex = 5;
             this.Un.Text = "1";
             this.Un.UseVisualStyleBackColor = true;
+            this.Un.Click += new System.EventHandler(this.Un_Click);
             // 
             // Deux
             // 
@@ -117,7 +122,7 @@
             this.Deux.TabIndex = 6;
             this.Deux.Text = "2";
             this.Deux.UseVisualStyleBackColor = true;
-            this.Deux.Click += new System.EventHandler(this.button6_Click);
+            this.Deux.Click += new System.EventHandler(this.Deux_Click);
             // 
             // Trois
             // 
@@ -127,6 +132,7 @@
             this.Trois.TabIndex = 7;
             this.Trois.Text = "3";
             this.Trois.UseVisualStyleBackColor = true;
+            this.Trois.Click += new System.EventHandler(this.Trois_Click);
             // 
             // Addict
             // 
@@ -136,6 +142,7 @@
             this.Addict.TabIndex = 8;
             this.Addict.Text = "+";
             this.Addict.UseVisualStyleBackColor = true;
+            this.Addict.Click += new System.EventHandler(this.Addict_Click);
             // 
             // Quatre
             // 
@@ -145,7 +152,7 @@
             this.Quatre.TabIndex = 9;
             this.Quatre.Text = "4";
             this.Quatre.UseVisualStyleBackColor = true;
-            this.Quatre.Click += new System.EventHandler(this.button9_Click);
+            this.Quatre.Click += new System.EventHandler(this.Quatre_Click);
             // 
             // Cinq
             // 
@@ -155,6 +162,7 @@
             this.Cinq.TabIndex = 10;
             this.Cinq.Text = "5";
             this.Cinq.UseVisualStyleBackColor = true;
+            this.Cinq.Click += new System.EventHandler(this.Cinq_Click);
             // 
             // Six
             // 
@@ -164,6 +172,7 @@
             this.Six.TabIndex = 11;
             this.Six.Text = "6";
             this.Six.UseVisualStyleBackColor = true;
+            this.Six.Click += new System.EventHandler(this.Six_Click);
             // 
             // Soustr
             // 
@@ -173,6 +182,7 @@
             this.Soustr.TabIndex = 12;
             this.Soustr.Text = "-";
             this.Soustr.UseVisualStyleBackColor = true;
+            this.Soustr.Click += new System.EventHandler(this.Soustr_Click);
             // 
             // Sept
             // 
@@ -182,6 +192,7 @@
             this.Sept.TabIndex = 13;
             this.Sept.Text = "7";
             this.Sept.UseVisualStyleBackColor = true;
+            this.Sept.Click += new System.EventHandler(this.Sept_Click);
             // 
             // Huit
             // 
@@ -191,6 +202,7 @@
             this.Huit.TabIndex = 14;
             this.Huit.Text = "8";
             this.Huit.UseVisualStyleBackColor = true;
+            this.Huit.Click += new System.EventHandler(this.Huit_Click);
             // 
             // Neuf
             // 
@@ -200,6 +212,7 @@
             this.Neuf.TabIndex = 15;
             this.Neuf.Text = "9";
             this.Neuf.UseVisualStyleBackColor = true;
+            this.Neuf.Click += new System.EventHandler(this.Neuf_Click);
             // 
             // Multi
             // 
@@ -209,6 +222,7 @@
             this.Multi.TabIndex = 16;
             this.Multi.Text = "*";
             this.Multi.UseVisualStyleBackColor = true;
+            this.Multi.Click += new System.EventHandler(this.Multi_Click);
             // 
             // button17
             // 
@@ -245,6 +259,7 @@
             this.Divis.TabIndex = 20;
             this.Divis.Text = "/";
             this.Divis.UseVisualStyleBackColor = true;
+            this.Divis.Click += new System.EventHandler(this.Divis_Click);
             // 
             // button21
             // 
@@ -282,7 +297,7 @@
             this.button24.Text = "button24";
             this.button24.UseVisualStyleBackColor = true;
             // 
-            // Form1
+            // Calculatrice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -311,10 +326,10 @@
             this.Controls.Add(this.Separa);
             this.Controls.Add(this.Zero);
             this.Controls.Add(this.PlusMoin);
-            this.Controls.Add(this.textBox1);
-            this.Name = "Form1";
-            this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Controls.Add(this.Resultat);
+            this.Name = "Calculatrice";
+            this.Text = "Calculatrice";
+            this.Load += new System.EventHandler(this.Calculatrice_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -322,7 +337,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox Resultat;
         private System.Windows.Forms.Button PlusMoin;
         private System.Windows.Forms.Button Zero;
         private System.Windows.Forms.Button Separa;

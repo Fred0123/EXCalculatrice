@@ -2,8 +2,8 @@ C:\Users\Mister KAT\source\repos\Calculatrice\Calculatrice\bin\Debug\Calculatric
 C:\Users\Mister KAT\source\repos\Calculatrice\Calculatrice\bin\Debug\Calculatrice.exe
 C:\Users\Mister KAT\source\repos\Calculatrice\Calculatrice\bin\Debug\Calculatrice.pdb
 C:\Users\Mister KAT\source\repos\Calculatrice\Calculatrice\obj\Debug\Calculatrice.csprojAssemblyReference.cache
-C:\Users\Mister KAT\source\repos\Calculatrice\Calculatrice\obj\Debug\Calculatrice.Form1.resources
 C:\Users\Mister KAT\source\repos\Calculatrice\Calculatrice\obj\Debug\Calculatrice.Properties.Resources.resources
 C:\Users\Mister KAT\source\repos\Calculatrice\Calculatrice\obj\Debug\Calculatrice.csproj.GenerateResource.cache
 C:\Users\Mister KAT\source\repos\Calculatrice\Calculatrice\obj\Debug\Calculatrice.exe
 C:\Users\Mister KAT\source\repos\Calculatrice\Calculatrice\obj\Debug\Calculatrice.pdb
+C:\Users\Mister KAT\source\repos\Calculatrice\Calculatrice\obj\Debug\Calculatrice.Calculatrice.resources
