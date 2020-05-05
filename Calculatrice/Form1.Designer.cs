@@ -52,7 +52,7 @@
             this.button21 = new System.Windows.Forms.Button();
             this.button22 = new System.Windows.Forms.Button();
             this.button23 = new System.Windows.Forms.Button();
-            this.button24 = new System.Windows.Forms.Button();
+            this.Clear = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Resultat
@@ -63,6 +63,7 @@
             this.Resultat.Size = new System.Drawing.Size(309, 103);
             this.Resultat.TabIndex = 0;
             this.Resultat.TextChanged += new System.EventHandler(this.Resultat_TextChanged);
+            this.Resultat.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Resultat_KeyPress);
             // 
             // PlusMoin
             // 
@@ -288,21 +289,23 @@
             this.button23.Text = "button23";
             this.button23.UseVisualStyleBackColor = true;
             // 
-            // button24
+            // Clear
             // 
-            this.button24.Location = new System.Drawing.Point(246, 121);
-            this.button24.Name = "button24";
-            this.button24.Size = new System.Drawing.Size(75, 40);
-            this.button24.TabIndex = 24;
-            this.button24.Text = "button24";
-            this.button24.UseVisualStyleBackColor = true;
+            this.Clear.Location = new System.Drawing.Point(246, 121);
+            this.Clear.Name = "Clear";
+            this.Clear.Size = new System.Drawing.Size(75, 40);
+            this.Clear.TabIndex = 24;
+            this.Clear.Text = "Clear";
+            this.Clear.UseVisualStyleBackColor = true;
+            this.Clear.Click += new System.EventHandler(this.Clear_click);
             // 
             // Calculatrice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(328, 394);
-            this.Controls.Add(this.button24);
+            this.Controls.Add(this.Clear);
             this.Controls.Add(this.button23);
             this.Controls.Add(this.button22);
             this.Controls.Add(this.button21);
@@ -327,6 +330,7 @@
             this.Controls.Add(this.Zero);
             this.Controls.Add(this.PlusMoin);
             this.Controls.Add(this.Resultat);
+            this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Name = "Calculatrice";
             this.Text = "Calculatrice";
             this.Load += new System.EventHandler(this.Calculatrice_Load);
@@ -361,7 +365,7 @@
         private System.Windows.Forms.Button button21;
         private System.Windows.Forms.Button button22;
         private System.Windows.Forms.Button button23;
-        private System.Windows.Forms.Button button24;
+        private System.Windows.Forms.Button Clear;
     }
 }
 

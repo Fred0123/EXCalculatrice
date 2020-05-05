@@ -17,64 +17,55 @@ namespace Calculatrice
             InitializeComponent();
         }
 
+        string operateur;
         private void Zero_Click(object sender, EventArgs e)
         {
-            Int32 zero = 0;
-            Resultat.Text = zero.ToString();
+            Resultat.Text += "0";
         }
 
         private void Un_Click(object sender, EventArgs e)
         {
-            Int32 un = 1;
-            Resultat.Text = un.ToString();
+            Resultat.Text += "1";
         }
 
         private void Deux_Click(object sender, EventArgs e)
         {
-            Int32 deux = 2;
-            Resultat.Text = deux.ToString();
+            Resultat.Text += "2";
         }
 
         private void Trois_Click(object sender, EventArgs e)
         {
-            Int32 trois = 3;
-            Resultat.Text = trois.ToString();
+            Resultat.Text += "3";
         }
 
         private void Quatre_Click(object sender, EventArgs e)
         {
-            Int32 quatre = 4;
-            Resultat.Text = quatre.ToString();
+            Resultat.Text += "4";
         }
 
         private void Cinq_Click(object sender, EventArgs e)
         {
-            Int32 cinq = 5;
-            Resultat.Text = cinq.ToString();
+            Resultat.Text += "5";
         }
 
         private void Six_Click(object sender, EventArgs e)
         {
-            Int32 six = 6;
-            Resultat.Text = six.ToString();
+            Resultat.Text += "6";
         }
 
         private void Sept_Click(object sender, EventArgs e)
         {
-            Int32 sept = 7;
-            Resultat.Text = sept.ToString();
+            Resultat.Text += "7";
         }
 
         private void Huit_Click(object sender, EventArgs e)
         {
-            Int32 huit = 8;
-            Resultat.Text = huit.ToString();
+            Resultat.Text += "8";
         }
 
         private void Neuf_Click(object sender, EventArgs e)
         {
-            Int32 neuf = 9;
-            Resultat.Text = neuf.ToString();
+            Resultat.Text += "9";
         }
 
         private void PlusMoin_Click(object sender, EventArgs e)
@@ -84,42 +75,85 @@ namespace Calculatrice
 
         private void Separa_Click(object sender, EventArgs e)
         {
-
+            Resultat.Text += ".";
         }
 
         private void Egal_Click(object sender, EventArgs e)
         {
-
+            if (operateur == "+")
+            {
+                string[] chaine = Resultat.Text.Split('+');
+                Resultat.Text += Environment.NewLine + (double.Parse(chaine[0]) + double.Parse(chaine[1])).ToString();
+            }
+            if (operateur == "-")
+            {
+                string[] chaine = Resultat.Text.Split('-');
+                Resultat.Text += Environment.NewLine + (double.Parse(chaine[0]) - double.Parse(chaine[1])).ToString();
+            }
+            if (operateur == "*")
+            {
+                string[] chaine = Resultat.Text.Split('*');
+                Resultat.Text += Environment.NewLine + (double.Parse(chaine[0]) * double.Parse(chaine[1])).ToString();
+            }
+            if (operateur == "/")
+            { 
+                string[] chaine = Resultat.Text.Split('/');
+                if(double.Parse(chaine[1]) != 0)
+                {
+                    Resultat.Text += Environment.NewLine + (double.Parse(chaine[0]) / double.Parse(chaine[1])).ToString();
+                }
+                else
+                {
+                    MessageBox.Show("Division par zero impossible");
+                }
+                
+            }
         }
 
         private void Addict_Click(object sender, EventArgs e)
         {
-            Int32 adi;
+            Resultat.Text += "+";
+            operateur = "+";
         }
 
         private void Soustr_Click(object sender, EventArgs e)
         {
-
+            Resultat.Text += "-";
+            operateur = "-";
         }
 
         private void Multi_Click(object sender, EventArgs e)
         {
-
+            Resultat.Text += "*";
+            operateur = "*";
         }
 
         private void Divis_Click(object sender, EventArgs e)
         {
-
+            Resultat.Text += "/";
+            operateur = "/";
         }
 
         private void Resultat_TextChanged(object sender, EventArgs e)
         {
-
+           
         }
 
         private void Calculatrice_Load(object sender, EventArgs e)
         {
 
+        }
+        private void Clear_click(object sender, EventArgs e)
+        {
+            Resultat.Text = string.Empty;
+        }
+
+        private void Resultat_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(char.IsDigit(e.KeyChar) != false && e.KeyChar != (char)8)
+                {
+                e.Handled = true;
+            }
         }
     }
 }
