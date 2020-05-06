@@ -67,10 +67,20 @@ namespace Calculatrice
         {
             Resultat.Text += "9";
         }
-
+        int cpt = 0;
         private void PlusMoin_Click(object sender, EventArgs e)
         {
-
+            
+            if(cpt == 0)
+            {
+                Resultat.Text += "-";
+                cpt = 1;
+            }
+            else if (cpt == 1)
+            {
+                Resultat.Text += "+";
+                cpt = 0;
+            }
         }
 
         private void Separa_Click(object sender, EventArgs e)
@@ -104,7 +114,11 @@ namespace Calculatrice
                 }
                 else
                 {
-                    MessageBox.Show("Division par zero impossible");
+                    MessageBox.Show(
+                        "Division par zero impossible",
+                        "Error division",
+                        MessageBoxButtons.OK, 
+                        MessageBoxIcon.Error);
                 }
                 
             }
