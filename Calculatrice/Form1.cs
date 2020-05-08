@@ -18,55 +18,6 @@ namespace Calculatrice
         }
 
         string operateur;
-        private void Zero_Click(object sender, EventArgs e)
-        {
-            Resultat.Text += "0";
-        }
-
-        private void Un_Click(object sender, EventArgs e)
-        {
-            Resultat.Text += "1";
-        }
-
-        private void Deux_Click(object sender, EventArgs e)
-        {
-            Resultat.Text += "2";
-        }
-
-        private void Trois_Click(object sender, EventArgs e)
-        {
-            Resultat.Text += "3";
-        }
-
-        private void Quatre_Click(object sender, EventArgs e)
-        {
-            Resultat.Text += "4";
-        }
-
-        private void Cinq_Click(object sender, EventArgs e)
-        {
-            Resultat.Text += "5";
-        }
-
-        private void Six_Click(object sender, EventArgs e)
-        {
-            Resultat.Text += "6";
-        }
-
-        private void Sept_Click(object sender, EventArgs e)
-        {
-            Resultat.Text += "7";
-        }
-
-        private void Huit_Click(object sender, EventArgs e)
-        {
-            Resultat.Text += "8";
-        }
-
-        private void Neuf_Click(object sender, EventArgs e)
-        {
-            Resultat.Text += "9";
-        }
         int cpt = 0;
         private void PlusMoin_Click(object sender, EventArgs e)
         {
@@ -85,11 +36,16 @@ namespace Calculatrice
 
         private void Separa_Click(object sender, EventArgs e)
         {
-            Resultat.Text += ".";
+            Resultat.Text += ",";
         }
 
         private void Egal_Click(object sender, EventArgs e)
         {
+            if(Resultat.Text == "")
+            {
+                MessageBox.Show("Aucun operation en cour", "Erreur de calcule", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
             if (operateur == "+")
             {
                 string[] chaine = Resultat.Text.Split('+');
@@ -124,29 +80,7 @@ namespace Calculatrice
             }
         }
 
-        private void Addict_Click(object sender, EventArgs e)
-        {
-            Resultat.Text += "+";
-            operateur = "+";
-        }
 
-        private void Soustr_Click(object sender, EventArgs e)
-        {
-            Resultat.Text += "-";
-            operateur = "-";
-        }
-
-        private void Multi_Click(object sender, EventArgs e)
-        {
-            Resultat.Text += "*";
-            operateur = "*";
-        }
-
-        private void Divis_Click(object sender, EventArgs e)
-        {
-            Resultat.Text += "/";
-            operateur = "/";
-        }
 
         private void Resultat_TextChanged(object sender, EventArgs e)
         {
@@ -164,10 +98,194 @@ namespace Calculatrice
 
         private void Resultat_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(char.IsDigit(e.KeyChar) != false && e.KeyChar != (char)8)
+            if(char.IsDigit(e.KeyChar) == false && e.KeyChar != (char)8)
                 {
                 e.Handled = true;
             }
         }
+
+        private void Valeur_click(object sender, EventArgs e)
+        {
+            Button Valeur = (Button)sender;
+            switch (Valeur.Text)
+            {
+                case "0":
+                    Resultat.Text += "0";
+                    break;
+                case "1":
+                    Resultat.Text += "1";
+                    break;
+                case "2":
+                    Resultat.Text += "2";
+                    break;
+                case "3":
+                    Resultat.Text += "3";
+                    break;
+                case "4":
+                    Resultat.Text += "4";
+                    break;
+                case "5":
+                    Resultat.Text += "5";
+                    break;
+                case "6":
+                    Resultat.Text += "6";
+                    break;
+                case "7":
+                    Resultat.Text += "7";
+                    break;
+                case "8":
+                    Resultat.Text += "8";
+                    break;
+                case "9":
+                    Resultat.Text += "9";
+                    break;
+                default:
+                    MessageBox.Show("Erreur chiffrement","Valeur inconnue", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    break;
+            }
+        }
+        double valeur;
+        int cpt_operateur = 0;
+        private void Operateur_click(object sender, EventArgs e)
+        {
+            Button Operateurs = (Button)sender;
+            switch (Operateurs.Text)
+            {
+                // Operateur d'addiction +
+                case "+":
+                    operateur = "+";
+                    if ((Resultat.Text == "" && cpt_operateur == 0) || Resultat.Text == "+" 
+                        || Resultat.Text == "-")
+                    {
+                        MessageBox.Show("Erro", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Resultat.Text = "";
+                    }
+                    else if(cpt_operateur == 0 && Resultat.Text != "")
+                    {
+                        valeur =Convert.ToDouble(Resultat.Text);
+                        cpt_operateur = 1;
+                        label1.Text = "+";
+                        solution.Text = Resultat.Text;
+                        Resultat.Text = "";
+                    }
+                    else if (cpt_operateur == 1 && Resultat.Text == "")
+                    {
+                        Resultat.Text = "";
+                        label1.Text = "+";
+                    }
+                    else
+                    {
+                        valeur += Convert.ToDouble(Resultat.Text);
+                        solution.Text = valeur.ToString();
+                        Resultat.Text = "";
+                    }
+                    break;
+                    // Operateur de soubstraction -
+                case "-":
+                    operateur = "-";
+                    if ((Resultat.Text == "" && cpt_operateur == 0) || Resultat.Text == "+"
+                        || Resultat.Text == "-")
+                    {
+                        MessageBox.Show("Erro", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Resultat.Text = "";
+                    }
+                    else if (cpt_operateur == 0 && Resultat.Text != "")
+                    {
+                        valeur = Convert.ToDouble(Resultat.Text);
+                        cpt_operateur = 1;
+                        label1.Text = "-";
+                        solution.Text = Resultat.Text;
+                        Resultat.Text = "";
+                    }
+                    else if (cpt_operateur == 1 && Resultat.Text == "")
+                    {
+                        Resultat.Text = "";
+                        label1.Text = "-";
+                    }
+                    else
+                    {
+                        valeur -= Convert.ToDouble(Resultat.Text);
+                        solution.Text = valeur.ToString();
+                        Resultat.Text = "";
+                    }
+                    break;
+                // Operateur de muliplication *
+                case "*":
+                    operateur = "*";
+                    if ((Resultat.Text == "" && cpt_operateur == 0) || Resultat.Text == "+"
+                        || Resultat.Text == "-")
+                    {
+                        MessageBox.Show("Erro", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Resultat.Text = "";
+                    }
+                    else if (cpt_operateur == 0 && Resultat.Text != "")
+                    {
+                        valeur = Convert.ToDouble(Resultat.Text);
+                        cpt_operateur = 1;
+                        label1.Text = "*";
+                        solution.Text = Resultat.Text;
+                        Resultat.Text = "";
+                    }
+                    else if (cpt_operateur == 1 && Resultat.Text == "")
+                    {
+                        Resultat.Text = "";
+                        label1.Text = "*";
+                    }
+                    else
+                    {
+                        valeur *= Convert.ToDouble(Resultat.Text);
+                        solution.Text = valeur.ToString();
+                        Resultat.Text = "";
+                    }
+                    break;
+                // Operateur de division /
+                case "/":
+                    operateur = "/";
+                    if ((Resultat.Text == "" && cpt_operateur == 0) || Resultat.Text == "+"
+                        || Resultat.Text == "-")
+                    {
+                        MessageBox.Show("Erro", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Resultat.Text = "";
+                    }
+                    else if (cpt_operateur == 0 && Resultat.Text != "")
+                    {
+                        valeur = Convert.ToDouble(Resultat.Text);
+                        cpt_operateur = 1;
+                        label1.Text = "/";
+                        solution.Text = Resultat.Text;
+                        Resultat.Text = "";
+                    }
+                    else if (cpt_operateur == 1 && Resultat.Text == "")
+                    {
+                        label1.Text = "/";
+                        Resultat.Text = "";
+                    }
+                    else
+                    {
+                        if (Resultat.Text == "0" && cpt_operateur == 1)
+                        {
+                            MessageBox.Show(
+                        "Division par zero impossible",
+                        "Error division",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                        valeur /= Convert.ToDouble(Resultat.Text);
+                        solution.Text = valeur.ToString();
+                        Resultat.Text = "";
+                        }   
+                    }
+                    break;
+                default:
+                    MessageBox.Show("Erreur operateur inconue", 
+                        "Operateur inconnues", 
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    break;
+            }
+        }
+
     }
 }
