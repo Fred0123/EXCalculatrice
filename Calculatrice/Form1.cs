@@ -17,8 +17,8 @@ namespace Calculatrice
             InitializeComponent();
         }
 
-        string operateur;
         int cpt = 0;
+
         private void PlusMoin_Click(object sender, EventArgs e)
         {
             
@@ -46,54 +46,49 @@ namespace Calculatrice
                 MessageBox.Show("Aucun operation en cour", "Erreur de calcule", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
-            if (operateur == "+")
+            else if (label1.Text == "+")
             {
-                string[] chaine = Resultat.Text.Split('+');
-                Resultat.Text += Environment.NewLine + (double.Parse(chaine[0]) + double.Parse(chaine[1])).ToString();
+                valeur += Convert.ToDouble(Resultat.Text);
+                solution.Text = valeur.ToString();
+                Resultat.Text = "";
             }
-            if (operateur == "-")
+            else if (label1.Text == "-")
             {
-                string[] chaine = Resultat.Text.Split('-');
-                Resultat.Text += Environment.NewLine + (double.Parse(chaine[0]) - double.Parse(chaine[1])).ToString();
+                valeur -= Convert.ToDouble(Resultat.Text);
+                solution.Text = valeur.ToString();
+                Resultat.Text = "";
             }
-            if (operateur == "*")
+            else if (label1.Text == "*")
             {
-                string[] chaine = Resultat.Text.Split('*');
-                Resultat.Text += Environment.NewLine + (double.Parse(chaine[0]) * double.Parse(chaine[1])).ToString();
+                valeur *= Convert.ToDouble(Resultat.Text);
+                solution.Text = valeur.ToString();
+                Resultat.Text = "";
             }
-            if (operateur == "/")
-            { 
-                string[] chaine = Resultat.Text.Split('/');
-                if(double.Parse(chaine[1]) != 0)
+            else if (label1.Text == "/")
+            {
+                if (Resultat.Text == "0" && cpt_operateur == 1)
                 {
-                    Resultat.Text += Environment.NewLine + (double.Parse(chaine[0]) / double.Parse(chaine[1])).ToString();
+                    MessageBox.Show(
+                "Division par zero impossible",
+                "Error division",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
                 }
                 else
                 {
-                    MessageBox.Show(
-                        "Division par zero impossible",
-                        "Error division",
-                        MessageBoxButtons.OK, 
-                        MessageBoxIcon.Error);
+                    valeur /= Convert.ToDouble(Resultat.Text);
+                    solution.Text = valeur.ToString();
+                    Resultat.Text = "";
                 }
-                
             }
         }
 
-
-
-        private void Resultat_TextChanged(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void Calculatrice_Load(object sender, EventArgs e)
-        {
-
-        }
         private void Clear_click(object sender, EventArgs e)
         {
             Resultat.Text = string.Empty;
+            label1.Text = string.Empty;
+            solution.Text = string.Empty;
+            valeur = 0;
         }
 
         private void Resultat_KeyPress(object sender, KeyPressEventArgs e)
@@ -153,7 +148,6 @@ namespace Calculatrice
             {
                 // Operateur d'addiction +
                 case "+":
-                    operateur = "+";
                     if ((Resultat.Text == "" && cpt_operateur == 0) || Resultat.Text == "+" 
                         || Resultat.Text == "-")
                     {
@@ -182,7 +176,6 @@ namespace Calculatrice
                     break;
                     // Operateur de soubstraction -
                 case "-":
-                    operateur = "-";
                     if ((Resultat.Text == "" && cpt_operateur == 0) || Resultat.Text == "+"
                         || Resultat.Text == "-")
                     {
@@ -211,7 +204,6 @@ namespace Calculatrice
                     break;
                 // Operateur de muliplication *
                 case "*":
-                    operateur = "*";
                     if ((Resultat.Text == "" && cpt_operateur == 0) || Resultat.Text == "+"
                         || Resultat.Text == "-")
                     {
@@ -240,7 +232,6 @@ namespace Calculatrice
                     break;
                 // Operateur de division /
                 case "/":
-                    operateur = "/";
                     if ((Resultat.Text == "" && cpt_operateur == 0) || Resultat.Text == "+"
                         || Resultat.Text == "-")
                     {
@@ -287,5 +278,9 @@ namespace Calculatrice
             }
         }
 
+        private void solution_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
     }
 }
